@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose')
 const User = require('./models/user')
-const PORT = 8080;
+
 const api = require('./routes/api')
 const app = express();
 require('dotenv').config();
@@ -12,7 +12,7 @@ require('dotenv').config();
 
 const url = process.env.MONGODB_CONNECTION_URL
 
-
+const port = process.env.PORT || 8080;
 
 
 app.use(cors());
@@ -51,6 +51,6 @@ app.get('/', function (req, res) {
 
 
 
-app.listen(PORT, function () {
-    console.log(`SERVER RUNNING ON PORT ${PORT}`)
-})
+app.listen(port, () => {
+    console.log("Server listening on port " + port);
+});
